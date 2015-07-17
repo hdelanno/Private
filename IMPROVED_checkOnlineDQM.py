@@ -266,21 +266,21 @@ def getTrivials():
     FillNumber = int(lhcfillHisto.GetBinContent ( LumiSection-1 ))
 
 def getnFEDErrors():    
-    fld = '/SiStrip/ReadoutView/FedSummary/FED'
+    fld = '/SiStrip/ReadoutView/FED'
     data = dqm_get_json(serverurl, str(RunNumber), "/Online/ALL", fld, True)
     return float(data['nFEDErrors']['rootobj'].GetMean())
 
 def getnBadChannels():
     global BadChannels
     global BadActiveChannels
-    fld = '/SiStrip/ReadoutView/FedSummary/Fiber'
+    fld = '/SiStrip/ReadoutView/Fiber'
     data = dqm_get_json(serverurl, str(RunNumber), "/Online/ALL", fld, True)
     BadChannels = float(data['nBadChannelStatusBits']['rootobj'].GetMean())
     BadActiveChannels = float(data['nBadActiveChannelStatusBits']['rootobj'].GetMean())
     
 
 def getFETimeDiff(plot):
-    fld = '/SiStrip/ReadoutView/FedSummary/FE/APVe'
+    fld = '/SiStrip/ReadoutView/FE/APVe'
     data = dqm_get_json(serverurl, str(RunNumber), "/Online/ALL", fld, True)
     info = []
     info.append ( data[ str(plot) ]['rootobj'].GetMean() )
